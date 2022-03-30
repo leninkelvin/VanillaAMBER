@@ -1,0 +1,14 @@
+2BLG+P empty: initial minimization solvent + ions
+ &cntrl
+  imin   = 1, !Minimization turned on
+  maxcyc = 10000, !Total of 10000 minimization steps 
+  ncyc   = 5000, !5000 steps of SD followed by 5000 CG
+  ntb    = 1, !Use constant volume periodic boundaries
+  ntr    = 1, !Use position restrains
+  cut    = 10.0
+  ig = -1
+  
+  restraint_wt = 500.0 ! The weight in kcal/(mol angstrom squared), force constant for the restraint
+  restraintmask = ':1-833' !Restrained atoms
+  
+ /

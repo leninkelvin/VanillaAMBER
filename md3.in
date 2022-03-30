@@ -1,0 +1,13 @@
+3BLG empty: 200ps MD
+ &cntrl
+  imin = 0, irest = 1, ntx = 7, !Not EM, restart and previous initial velocities
+  ntb = 2, pres0 = 1.0, ntp = 1, taup = 2.0, ! Constant presure, 1 ATM, isotropic scaling and tau 2
+  ntc = 2, ntf = 2, !SHAKE for hydrogens 
+  tempi = 300.0, temp0 = 300.0, ntt = 3, gamma_ln = 1.0, !Temp control with 1 freq, constant temp
+  nstlim = 50000000, dt = 0.002, !Simulation time
+  ntpr = 10000, ntwx = 10000, ntwr = 500000 !Output file, trajectory and restart files
+  cut = 9.0, ntr = 0,
+  ig=-1,
+  ioutfm = 1, !Binary NetCDF trajectory
+  /
+
