@@ -1,0 +1,9 @@
+&cntrl
+  imin   = 1, !Minimization turned on
+  maxcyc = 10000, !Total of 10000 minimization steps 
+  ncyc   = 5000, !5000 steps of SD followed by 5000 CG
+  ntb    = 1, !Use constant volume periodic boundaries
+  ntr    = 0, !Do not use position restrains
+  cut    = 10.0
+  ig = -1
+ /

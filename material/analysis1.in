@@ -1,0 +1,21 @@
+trajin 5R8T_wat_md3.mdcrd #
+
+strip :WAT
+strip :Na+
+strip :Cl-
+center :1-304 mass origin
+image origin center
+autoimage
+rms first :1-304
+
+rms first :1-304 out rmsA.dat
+
+atomicfluct out rmsfA :1-304 byres bfactor 
+
+hbond donormask :1-304 acceptormask :1-304 out DAnhb.dat avgout DAavghb.dat 
+
+hbond acceptormask :1-304 donormask :1-304 out ADnhb.dat avgout ADavghb.dat 
+
+secstruct :1-304 out dssp.gnu 
+
+go
