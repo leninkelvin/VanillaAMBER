@@ -182,7 +182,13 @@ Even thou I opened two files **DAnhb.dat** and **ADnhb.dat** we can only see one
 
 ![NHB](https://github.com/leninkelvin/VanillaAMBER/blob/main/material/ADnhb.png)
 
-We can visualize secondary structure in two ways, both calculated above. First, with gnuplot:
+We can visualize secondary structure in two ways, both calculated above. [Gnuplot](http://www.gnuplot.info) can be installed with:
+
+```
+sudo apt install gnuplot
+```
+
+First, with gnuplot:
 ```
 gnuplot dssp.gnu
 ```
