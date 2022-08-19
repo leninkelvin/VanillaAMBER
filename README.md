@@ -1,3 +1,7 @@
+![GitHub all releases](https://img.shields.io/github/downloads/leninkelvin/VanillaAMBER/total?style=for-the-badge&logo=appveyor)
+![GitHub forks](https://img.shields.io/github/forks/leninkelvin/VanillaAMBER?style=for-the-badge&logo=appveyor)
+![GitHub Repo stars](https://img.shields.io/github/stars/leninkelvin/VanillaAMBER?style=for-the-badge&logo=appveyor)
+
 # Vanilla AMBER
 This is a guide to use AMBER MD. It will borrow material from the [Amber Tutorials](http://ambermd.org/tutorials/) tutorials as well as experience and more resources. 
 
@@ -110,14 +114,14 @@ Among the files in this repo we have [analysis1.in](https://github.com/leninkelv
 While the content of all of the files included is important (read the manual) we will only delve into this last one:
 
 ```
-trajin 5R8T_wat_md3.mdcrd #
+trajin 5R8T_wat_md3.mdcrd # read in the trajectory to analyse
 
-strip :WAT
-strip :Na+
-strip :Cl-
+strip :WAT # removing WAT molecules
+strip :Na+ # removing sodium atoms
+strip :Cl- # removing chlorine atoms
 center :1-304 mass origin
 image origin center
-autoimage
+autoimage         # all of this to center the solute
 rms first :1-304
 
 rms first :1-304 out rmsA.dat
@@ -140,5 +144,59 @@ The following three lines remove water, sodium and chlorine atoms.
 Then, four lines to make sure that our protein is centered and the frames (steps) of the simulation are aligned before the analysis.
 
 Now, the next lines will calculate RMSD, RMSF, hydrogen bonds and secondary structure. 
+RUn the command:
 
+```
+cpptraj -p 5R8T_wat.prmtop -i analysis1.in
+```
 
+And you should have new files in your directory. If, something went wrong, you would have to troubleshoot. Read the errors since they are informative and the output is verbose. For visualization [grace](https://plasma-gate.weizmann.ac.il/Grace/) is the best. You can install it in linux like this:
+```
+sudo apt install grace
+```
+
+If it is already installed:
+```
+xmgrace rmsA.dat &
+```
+The result should look like this, X-axis is frames not time, and Y-axis is angstroms.
+
+![RMSD](https://github.com/leninkelvin/VanillaAMBER/blob/main/material/rmsA.png)
+
+Now, RMSF. Here X-axis is residue and Y-axis is displacement (check the manual). The image is presented as grace displays it. It, of course, has to be modified and adjusted to be published. 
+
+```
+xmgrace rmsfA.dat &
+```
+
+Notice the last residues are really moving. It is worthwhile to check if an atom (or residue) not attached to the solute was taken into consideration in the calculation. 
+ 
+![RMSF](https://github.com/leninkelvin/VanillaAMBER/blob/main/material/rmsfA.png)
+
+To visualize hydrogen binds, run the command:
+
+```
+xmgrace -nxy DAnhb.dat ADnhb.dat
+```
+Even thou I opened two files **DAnhb.dat** and **ADnhb.dat** we can only see one line. It is because the results are the same result.
+
+![NHB](https://github.com/leninkelvin/VanillaAMBER/blob/main/material/ADnhb.png)
+
+We can visualize secondary structure in two ways, both calculated above. First, with gnuplot:
+```
+gnuplot dssp.gnu
+```
+![DSSP](https://github.com/leninkelvin/VanillaAMBER/blob/main/material/dssp.png)
+```
+This format gives a view of the secondary structure per residue vs time. It will allow us to percieve changes in initial secondary structure. In this case, it is difficult to identify specific regions because residue labels are overlapping.
+Another visualization can be achieved using grace:
+xmgrace -nxy dssp.gnu.sum &
+```
+![DSSPSUM](https://github.com/leninkelvin/VanillaAMBER/blob/main/material/dssppr.png)
+Here we see total of secondary structure (Y-axis) vs residue (X-axis). It allows for the observation of regions fluctuating between different structures. 
+
+These are only a few of the analyses that can be carried out with amber. Hopefully, this will help you start off on your own.
+
+# Créditos
+
+Author [Lenin Domínguez-Ramírez](https://github.com/leninkelvin)
