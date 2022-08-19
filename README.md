@@ -207,3 +207,9 @@ These are only a few of the analyses that can be carried out with amber. Hopeful
 # Créditos
 
 Author [Lenin Domínguez-Ramírez](https://github.com/leninkelvin)
+
+# Data
+
+If you want the output data to compare there is a copy at figshare:
+
+https://doi.org/10.6084/m9.figshare.20514864.v1
