@@ -1,6 +1,7 @@
 ![GitHub all releases](https://img.shields.io/github/downloads/leninkelvin/VanillaAMBER/total?style=for-the-badge&logo=appveyor)
 ![GitHub forks](https://img.shields.io/github/forks/leninkelvin/VanillaAMBER?style=for-the-badge&logo=appveyor)
 ![GitHub Repo stars](https://img.shields.io/github/stars/leninkelvin/VanillaAMBER?style=for-the-badge&logo=appveyor)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7008274.svg)](https://doi.org/10.5281/zenodo.7008274)
 
 # Vanilla AMBER
 This is a guide to use AMBER MD. It will borrow material from the [Amber Tutorials](http://ambermd.org/tutorials/) tutorials as well as experience and more resources. 
